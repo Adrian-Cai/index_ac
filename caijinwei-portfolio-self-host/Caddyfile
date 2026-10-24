@@ -1,0 +1,4 @@
+index.wiac.xyz {
+    root * /srv
+    file_server
+}

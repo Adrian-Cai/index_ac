@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f1" />
+  <meta name="description" content="蔡金伟 / Adrian Cai，测试开发工程师、AI Testing 实践者与产品构建者。" />
+  <title>蔡金伟 / Adrian Cai — 个人主页</title>
+  <style>
+    :root {
+      --paper: #f5f5f1;
+      --surface: #fff;
+      --ink: #151817;
+      --muted: #717874;
+      --line: #dfe2dc;
+      --signal: #c9ef57;
+      --signal-dark: #a4c938;
+      --night: #1c2220;
+      --radius: 20px;
+      --page: 1160px;
+      color-scheme: light;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(var(--page), calc(100% - 56px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid rgba(21,24,23,.08);
+      background: rgba(245,245,241,.9);
+      backdrop-filter: blur(16px);
+    }
+    .nav-shell { width: min(var(--page), calc(100% - 56px)); min-height: 76px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; white-space: nowrap; font-size: 14px; font-weight: 650; letter-spacing: -.02em; }
+    .brand-mark { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: var(--signal); font-size: 12px; font-weight: 800; letter-spacing: -.07em; }
+    .top-nav { display: flex; align-items: center; gap: 6px; padding: 5px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.54); }
+    .top-nav button { border: 0; border-radius: 999px; padding: 9px 16px; background: transparent; color: #636b66; cursor: pointer; font-size: 13px; transition: background .2s ease, color .2s ease; }
+    .top-nav button:hover { color: var(--ink); }
+    .top-nav button[aria-selected="true"] { background: var(--ink); color: #fff; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .nav-cta .arrow, .text-link .arrow { color: #667543; }
+    [hidden] { display: none !important; }
+    .panel { animation: reveal .32s ease both; }
+    @keyframes reveal { from { opacity: .45; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero { padding: 77px 0 66px; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(330px, .88fr); gap: 72px; align-items: center; }
+    .eyebrow, .kicker { margin: 0 0 18px; color: #667543; font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .hero h1 { margin: 0; font-size: clamp(48px, 7vw, 82px); line-height: 1.04; letter-spacing: -.07em; font-weight: 700; }
+    .hero h1 span { display: block; margin-top: 11px; color: #858c86; font-size: clamp(25px, 3vw, 34px); letter-spacing: -.045em; font-weight: 520; }
+    .role-line { margin: 26px 0 0; color: #3a423d; font-size: 16px; font-weight: 550; }
+    .hero-copy { max-width: 600px; margin: 14px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+    .hero-actions { margin-top: 29px; display: flex; flex-wrap: wrap; gap: 11px; }
+    .button { min-height: 46px; padding: 0 17px; border: 1px solid var(--ink); border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; font-weight: 620; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--ink); color: #fff; }
+    .button.primary:hover { background: #303a34; }
+    .button.secondary { border-color: var(--line); background: rgba(255,255,255,.45); }
+    .button.secondary:hover { background: #fff; }
+    .button .arrow { font-size: 16px; line-height: 1; }
+
+    .hero-card { min-height: 326px; position: relative; overflow: hidden; padding: 27px; border-radius: 24px; background: var(--night); color: #f7f8f3; }
+    .hero-card::after { content: ""; position: absolute; width: 260px; height: 260px; right: -118px; top: -116px; border: 1px solid rgba(201,239,87,.32); border-radius: 50%; box-shadow: 0 0 0 24px rgba(201,239,87,.035), 0 0 0 50px rgba(201,239,87,.025); }
+    .hero-card-top { position: relative; z-index: 1; display: flex; justify-content: space-between; color: #bbc1bb; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .status-dot { display: inline-flex; align-items: center; gap: 8px; color: #dce1da; letter-spacing: .02em; text-transform: none; }
+    .status-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgba(201,239,87,.1); }
+    .loop-visual { position: relative; height: 172px; margin: 8px -4px 0; display: grid; place-items: center; }
+    .loop-ring { width: 148px; height: 148px; border: 1px solid rgba(236,242,231,.26); border-radius: 50%; position: absolute; }
+    .loop-ring::before, .loop-ring::after { content: ""; position: absolute; border: 1px solid rgba(236,242,231,.17); border-radius: 50%; inset: 18px; }
+    .loop-ring::after { inset: 38px; border-color: rgba(201,239,87,.62); }
+    .loop-center { width: 48px; height: 48px; z-index: 1; display: grid; place-items: center; border-radius: 14px; background: var(--signal); color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: -.08em; }
+    .orbit-label { position: absolute; padding: 6px 10px; border: 1px solid rgba(236,242,231,.18); border-radius: 999px; background: #252d29; color: #dbe1d9; font-size: 10px; letter-spacing: .04em; }
+    .orbit-label.one { top: 13px; left: 23%; }
+    .orbit-label.two { right: 12%; top: 75px; }
+    .orbit-label.three { bottom: 8px; left: 26%; }
+    .hero-card-bottom { position: relative; z-index: 1; border-top: 1px solid rgba(236,242,231,.16); padding-top: 15px; display: flex; justify-content: space-between; color: #c5cbc4; font-size: 11px; }
+    .hero-card-bottom strong { color: #f6f7f2; font-weight: 550; }
+    .intro-strip { padding: 21px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 24px; align-items: center; color: #5c655f; font-size: 13px; }
+    .intro-strip strong { color: var(--ink); font-weight: 650; }
+    .strip-right { display: flex; gap: 23px; color: #707a73; white-space: nowrap; font-size: 12px; }
+    .strip-right span::before { content: ""; width: 5px; height: 5px; margin: 0 8px 2px 0; display: inline-block; background: var(--signal-dark); border-radius: 50%; }
+
+    .section { padding: 78px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 25px; }
+    .section-head h2, .page-heading h1 { margin: 0; font-size: clamp(30px, 4vw, 42px); line-height: 1.15; letter-spacing: -.055em; }
+    .section-head .kicker { margin-bottom: 12px; }
+    .text-link { color: #39413c; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .text-link:hover { color: #687c2e; }
+    .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .focus-card { min-height: 184px; padding: 22px 23px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.55); }
+    .focus-number { display: block; margin-bottom: 24px; color: #879087; font-size: 11px; letter-spacing: .1em; }
+    .focus-card h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: -.035em; }
+    .focus-card p { max-width: 290px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+    .work-preview { padding-top: 5px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: box-shadow .2s ease, transform .2s ease; }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(29,39,32,.07); }
+    .project-art { height: 206px; padding: 21px; position: relative; overflow: hidden; background: #e9eee4; }
+    .project-art.dark { background: #dfe7e4; }
+    .project-art.bead { background: #f1eee5; }
+    .project-art.rag { background: #ebe8f0; }
+    .art-caption { position: absolute; left: 23px; top: 19px; color: #647067; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+    .mini-window { position: absolute; width: min(77%, 355px); height: 138px; left: 50%; top: 49%; transform: translate(-50%,-42%); border: 1px solid rgba(48,61,53,.13); border-radius: 12px; overflow: hidden; background: rgba(255,255,255,.82); box-shadow: 0 13px 28px rgba(53,71,57,.09); }
+    .window-bar { height: 18px; padding-left: 9px; display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,.74); border-bottom: 1px solid rgba(38,51,44,.09); }
+    .window-bar i { width: 4px; height: 4px; border-radius: 50%; background: #c8cec6; }
+    .dash { height: calc(100% - 18px); display: grid; grid-template-columns: 31px 1fr; }
+    .dash-side { padding-top: 12px; background: #f2f5f1; display: flex; flex-direction: column; align-items: center; gap: 9px; }
+    .dash-side i { width: 9px; height: 9px; border-radius: 3px; background: #d1d9cf; }
+    .dash-side i:first-child { background: var(--signal-dark); }
+    .dash-main { padding: 13px; }
+    .dash-title { width: 68px; height: 6px; margin-bottom: 10px; border-radius: 5px; background: #aab4aa; }
+    .dash-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .dash-rows i { height: 32px; border: 1px solid #e3e8e1; border-radius: 6px; background: #fff; }
+    .dash-rows i:last-child { grid-column: span 2; height: 29px; background: linear-gradient(100deg,#fff 14%,#e4efdd 14%,#e4efdd 16%,#fff 16%,#fff 33%,#d5e5cf 33%,#d5e5cf 35%,#fff 35%); }
+    .bead-canvas { position: absolute; width: 150px; height: 150px; left: 50%; top: 52%; transform: translate(-50%,-42%); display: grid; grid-template-columns: repeat(8,1fr); grid-template-rows: repeat(8,1fr); gap: 3px; padding: 9px; border-radius: 12px; background: #fff; box-shadow: 0 14px 28px rgba(57,55,42,.08); }
+    .bead-canvas i { border-radius: 3px; background: #d9dfd4; }
+    .bead-canvas i:nth-child(8n+1), .bead-canvas i:nth-child(8n+8) { background: #ded8c8; }
+    .bead-canvas i:nth-child(19), .bead-canvas i:nth-child(20), .bead-canvas i:nth-child(27), .bead-canvas i:nth-child(28), .bead-canvas i:nth-child(35), .bead-canvas i:nth-child(36), .bead-canvas i:nth-child(43), .bead-canvas i:nth-child(44) { background: #859d65; }
+    .bead-canvas i:nth-child(21), .bead-canvas i:nth-child(22), .bead-canvas i:nth-child(29), .bead-canvas i:nth-child(30), .bead-canvas i:nth-child(37), .bead-canvas i:nth-child(38), .bead-canvas i:nth-child(45), .bead-canvas i:nth-child(46) { background: #cf9a67; }
+    .bead-note { position: absolute; right: 10%; bottom: 17%; padding: 7px 10px; border: 1px solid rgba(54,61,48,.1); border-radius: 8px; background: rgba(255,255,255,.78); color: #657061; font-size: 10px; }
+    .signal-lines { position: absolute; left: 18%; right: 18%; top: 50%; height: 78px; transform: translateY(-35%); display: flex; align-items: end; gap: 8px; }
+    .signal-lines i { flex: 1; border-radius: 4px 4px 1px 1px; background: #768b70; opacity: .86; }
+    .signal-lines i:nth-child(1) { height: 30%; }.signal-lines i:nth-child(2) { height: 54%; }.signal-lines i:nth-child(3) { height: 42%; }.signal-lines i:nth-child(4) { height: 77%; }.signal-lines i:nth-child(5) { height: 62%; }.signal-lines i:nth-child(6) { height: 95%; background: var(--signal-dark); }.signal-lines i:nth-child(7) { height: 67%; }
+    .project-copy { padding: 20px 22px 22px; }
+    .project-meta { display: flex; justify-content: space-between; gap: 12px; align-items: center; color: #718073; font-size: 11px; }
+    .project-meta .tag { padding: 5px 9px; border-radius: 999px; background: #eff3e8; color: #596b3e; font-weight: 600; }
+    .project-copy h3 { margin: 12px 0 7px; font-size: 20px; letter-spacing: -.045em; }
+    .project-copy p { margin: 0; max-width: 510px; color: var(--muted); font-size: 13px; line-height: 1.85; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 16px; }
+    .project-links a, .project-links button { padding: 0; border: 0; background: transparent; color: #414a43; cursor: pointer; font-size: 12px; font-weight: 650; }
+    .project-links a:hover, .project-links button:hover { color: #718a35; }
+    .project-links .pending { color: #8a918b; cursor: default; font-weight: 500; }
+
+    .creation-teaser { padding-top: 31px; }
+    .creation-row { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; }
+    .account-card, .course-card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.56); }
+    .account-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 217px; }
+    .account-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--signal); font-size: 15px; font-weight: 800; }
+    .account-card h3 { margin: 20px 0 4px; font-size: 20px; letter-spacing: -.04em; }
+    .account-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .course-card { min-height: 217px; background: var(--night); color: #f6f8f2; }
+    .course-card .kicker { color: #bdde67; margin-bottom: 18px; }
+    .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; }
+    .course-list a { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 0; border-bottom: 1px solid rgba(236,242,231,.15); color: #e7ebe4; font-size: 13px; }
+    .course-list a:hover { color: var(--signal); }
+    .course-list small { color: #adb7ad; font-size: 10px; white-space: nowrap; }
+    .closing { padding: 38px; border-radius: 23px; background: var(--signal); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .closing h2 { max-width: 630px; margin: 0; font-size: clamp(24px,3vw,34px); line-height: 1.25; letter-spacing: -.055em; }
+    .closing .button { background: var(--ink); color: #fff; border-color: var(--ink); white-space: nowrap; }
+    .footer { padding: 23px 0 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: #788079; font-size: 11px; }
+
+    .page-heading { padding: 70px 0 34px; display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+    .page-heading p:last-child { max-width: 490px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .project-grid.full { padding-bottom: 74px; }
+    .project-grid.full .project-art { height: 223px; }
+    .creation-hero { padding: 68px 0 34px; }
+    .creation-hero h1 { max-width: 780px; margin: 0; font-size: clamp(38px,6vw,66px); line-height: 1.12; letter-spacing: -.07em; }
+    .creation-hero > p:last-child { max-width: 600px; margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .creator-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 16px; padding-bottom: 70px; }
+    .creator-card { min-height: 280px; position: relative; overflow: hidden; padding: 27px; border: 1px solid var(--line); border-radius: 22px; background: white; }
+    .creator-card.main { background: #e9eee4; }
+    .creator-card h2 { margin: 52px 0 8px; font-size: 25px; letter-spacing: -.05em; }
+    .creator-card p { max-width: 400px; margin: 0; color: #68726a; font-size: 13px; line-height: 1.85; }
+    .creator-kicker { color: #6c7d4f; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .creator-stamp { position: absolute; right: 25px; top: 24px; width: 51px; height: 51px; border-radius: 17px; display: grid; place-items: center; background: var(--signal); font-size: 17px; font-weight: 800; }
+    .creator-bottom { position: absolute; bottom: 24px; left: 27px; right: 27px; padding-top: 13px; border-top: 1px solid rgba(35,46,38,.12); display: flex; justify-content: space-between; align-items: center; color: #667066; font-size: 11px; }
+    .creator-bottom strong { color: #303a32; font-size: 12px; }
+    .course-section { padding: 0 0 78px; }
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .course-tile { min-height: 212px; padding: 21px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: 18px; background: var(--night); color: white; transition: transform .18s ease, background .18s ease; }
+    .course-tile:hover { transform: translateY(-3px); background: #27302b; }
+    .course-tile .lesson { color: #c5d887; font-size: 11px; letter-spacing: .08em; }
+    .course-tile h3 { margin: 16px 0 5px; font-size: 19px; letter-spacing: -.04em; }
+    .course-tile p { margin: 0; color: #b8c0b8; font-size: 12px; }
+    .course-tile .course-cta { padding-top: 13px; border-top: 1px solid rgba(236,242,231,.16); display: flex; justify-content: space-between; color: #e1e6de; font-size: 11px; }
+    .course-tile[data-ready="true"] .course-cta { color: var(--signal); }
+    .course-note { margin: 15px 0 0; color: #79817a; font-size: 11px; }
+
+    .resume-shell { padding: 65px 0 80px; }
+    .resume-hero { padding: 36px; border: 1px solid var(--line); border-radius: 22px; background: #fff; display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: center; }
+    .resume-hero h1 { margin: 0; font-size: clamp(34px,5vw,55px); line-height: 1.12; letter-spacing: -.065em; }
+    .resume-hero p { max-width: 600px; margin: 17px 0 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .resume-file { min-height: 190px; padding: 21px; border: 1px dashed #bac2b9; border-radius: 17px; background: #f7f8f4; display: flex; flex-direction: column; justify-content: space-between; }
+    .file-icon { width: 36px; height: 42px; border: 1px solid #aeb8ad; border-radius: 6px; display: grid; place-items: center; color: #56644e; font-size: 10px; font-weight: 700; }
+    .resume-file strong { display: block; font-size: 13px; }
+    .resume-file small { display: block; margin-top: 5px; color: #79817a; font-size: 11px; }
+    .resume-sections { margin-top: 14px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .resume-item { min-height: 115px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.45); }
+    .resume-item span { color: #8b938c; font-size: 10px; letter-spacing: .1em; }
+    .resume-item strong { display: block; margin-top: 23px; font-size: 14px; }
+    .resume-item small { display: block; margin-top: 4px; color: #858d86; font-size: 10px; }
+    .resume-note { margin-top: 22px; color: #737c75; font-size: 12px; }
+    .resume-shell { padding-bottom: 84px; }
+    .resume-hero.profile { grid-template-columns: minmax(0,1fr) 250px; align-items: stretch; }
+    .resume-name { margin: 0; font-size: clamp(38px,5vw,56px); line-height: 1.05; letter-spacing: -.065em; }
+    .resume-hero .resume-title { margin: 10px 0 0; color: #52604e; font-size: 17px; font-weight: 650; }
+    .resume-hero .resume-summary { max-width: 720px; margin-top: 17px !important; }
+    .resume-contact { margin-top: 21px; display: flex; flex-wrap: wrap; gap: 9px; }
+    .resume-contact a { padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; background: #fbfcf9; color: #465047; font-size: 11px; }
+    .resume-contact a:hover { border-color: #b6c491; color: #526c28; }
+    .resume-highlight { padding: 21px; border-radius: 17px; background: var(--night); color: #f6f8f2; display: flex; flex-direction: column; justify-content: space-between; }
+    .resume-highlight span { color: #c9d38f; font-size: 10px; letter-spacing: .12em; }
+    .resume-highlight strong { display: block; font-size: 35px; line-height: 1; letter-spacing: -.05em; }
+    .resume-highlight small { color: #c4ccc2; font-size: 11px; line-height: 1.6; }
+    .resume-block { margin-top: 48px; }
+    .resume-block .section-head { margin-bottom: 19px; }
+    .resume-block .section-head h2 { font-size: 28px; }
+    .resume-block .section-head .kicker { margin-bottom: 9px; }
+    .resume-skill-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .resume-skill { min-height: 102px; padding: 17px 19px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.58); }
+    .resume-skill span { color: #77836f; font-size: 9px; font-weight: 700; letter-spacing: .12em; }
+    .resume-skill p { margin: 8px 0 0; color: #485149; font-size: 12px; line-height: 1.75; }
+    .resume-timeline { display: grid; gap: 13px; }
+    .resume-role { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .resume-role-head { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
+    .resume-role-head h3 { margin: 0; font-size: 20px; letter-spacing: -.04em; }
+    .resume-role-head p { margin: 4px 0 0; color: #788179; font-size: 11px; }
+    .resume-role-date { padding: 6px 10px; border-radius: 999px; background: #f0f3e9; color: #65724d; font-size: 11px; white-space: nowrap; }
+    .resume-role-stats { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .resume-role-stats span { padding: 5px 9px; border-radius: 7px; background: #f6f7f4; color: #647065; font-size: 10px; }
+    .resume-role ul, .project-detail ul { margin: 15px 0 0; padding-left: 18px; color: #505a52; font-size: 12px; line-height: 1.8; }
+    .resume-role li, .project-detail li { padding-left: 2px; margin: 4px 0; }
+    .resume-role li::marker, .project-detail li::marker { color: #8ba14e; }
+    .project-detail { margin-top: 15px; border-top: 1px solid var(--line); }
+    .project-detail summary { padding: 13px 0 0; color: #4b5e37; font-size: 12px; font-weight: 650; cursor: pointer; list-style-position: inside; }
+    .project-detail summary:hover { color: #738c34; }
+    .project-detail-content { padding: 11px 14px 14px; border-left: 2px solid #c9df88; margin-top: 10px; background: #fafbf8; }
+    .project-detail-content p { margin: 0; color: #69736b; font-size: 11px; line-height: 1.8; }
+    .project-detail-content .subhead { margin: 11px 0 -8px; color: #526049; font-size: 10px; font-weight: 700; }
+    .project-detail ul { font-size: 11px; margin-top: 10px; }
+    .resume-project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .resume-project { min-height: 210px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    .resume-project-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+    .resume-project h3 { margin: 0; font-size: 19px; letter-spacing: -.045em; }
+    .resume-project .project-kind { display: inline-block; margin-bottom: 8px; color: #71824d; font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .resume-project p { margin: 11px 0 0; color: #68726a; font-size: 11px; line-height: 1.8; }
+    .resume-project-qr { width: 112px; height: 112px; flex: 0 0 112px; object-fit: contain; border: 1px solid #e9ece6; border-radius: 10px; background: #fff; }
+    .resume-project-footer { margin-top: 16px; padding-top: 11px; border-top: 1px solid #e9ece6; color: #7a837c; font-size: 10px; }
+    .resume-skill-summary { margin: 16px 0 0; color: #788178; font-size: 10px; }
+    .toast { position: fixed; z-index: 20; left: 50%; bottom: 24px; transform: translate(-50%, 15px); padding: 11px 16px; border-radius: 999px; background: #1c2220; color: #fff; box-shadow: 0 8px 25px rgba(0,0,0,.18); font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 35px; padding-top: 56px; }
+      .hero-card { min-height: 290px; }
+      .three-grid { grid-template-columns: 1fr; }
+      .focus-card { min-height: auto; }
+      .focus-number { margin-bottom: 17px; }
+      .strip-right { gap: 11px; }
+      .page-heading { align-items: start; flex-direction: column; }
+      .resume-hero { grid-template-columns: 1fr; }
+      .resume-file { min-height: 160px; }
+      .resume-hero.profile { grid-template-columns: 1fr; }
+      .resume-highlight { min-height: 140px; }
+    }
+    @media (max-width: 640px) {
+      .shell, .nav-shell { width: min(100% - 34px, var(--page)); }
+      .nav-shell { min-height: 66px; flex-wrap: wrap; gap: 10px; padding: 11px 0 9px; }
+      .brand { font-size: 13px; }
+      .brand-mark { width: 31px; height: 31px; }
+      .nav-cta { font-size: 11px; }
+      .top-nav { order: 3; width: 100%; overflow-x: auto; justify-content: space-between; }
+      .top-nav button { flex: 1; padding: 8px 10px; white-space: nowrap; font-size: 12px; }
+      .hero { padding: 46px 0 38px; gap: 28px; }
+      .hero h1 { font-size: clamp(46px,13vw,64px); }
+      .role-line { margin-top: 20px; font-size: 14px; }
+      .hero-copy { font-size: 13px; }
+      .hero-card { min-height: 265px; padding: 20px; border-radius: 19px; }
+      .loop-visual { height: 142px; }
+      .loop-ring { width: 125px; height: 125px; }
+      .orbit-label.one { left: 10%; }.orbit-label.two { right: 5%; }.orbit-label.three { left: 14%; }
+      .intro-strip { align-items: flex-start; flex-direction: column; gap: 9px; font-size: 12px; }
+      .strip-right { flex-wrap: wrap; white-space: normal; font-size: 11px; }
+      .section { padding: 57px 0; }
+      .section-head { align-items: start; flex-direction: column; margin-bottom: 20px; }
+      .section-head h2, .page-heading h1 { font-size: 32px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-art { height: 190px; }
+      .creation-row { grid-template-columns: 1fr; }
+      .course-list { grid-template-columns: 1fr; }
+      .course-card { min-height: auto; }
+      .closing { align-items: flex-start; flex-direction: column; padding: 26px; }
+      .footer { align-items: flex-start; flex-direction: column; }
+      .page-heading { padding: 48px 0 27px; }
+      .project-grid.full { padding-bottom: 54px; }
+      .creation-hero { padding: 49px 0 25px; }
+      .creation-hero h1 { font-size: 40px; }
+      .creator-grid { grid-template-columns: 1fr; padding-bottom: 55px; }
+      .creator-card { min-height: 255px; }
+      .course-grid { grid-template-columns: 1fr; }
+      .course-tile { min-height: 180px; }
+      .resume-shell { padding: 48px 0 58px; }
+      .resume-hero { padding: 24px; gap: 22px; }
+      .resume-sections { grid-template-columns: repeat(2,1fr); }
+      .resume-item { min-height: 100px; }
+      .resume-item strong { margin-top: 17px; }
+      .resume-block { margin-top: 38px; }
+      .resume-block .section-head h2 { font-size: 24px; }
+      .resume-skill-grid, .resume-project-grid { grid-template-columns: 1fr; }
+      .resume-skill { min-height: auto; }
+      .resume-role { padding: 18px; }
+      .resume-role-head { flex-direction: column; gap: 9px; }
+      .resume-role-date { order: -1; }
+      .resume-project { padding: 18px; }
+      .resume-project-qr { width: 90px; height: 90px; flex-basis: 90px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#home" data-route="home" aria-label="返回主页">
+        <span class="brand-mark">AC.</span><span>蔡金伟 <span style="color:#8a928a;font-weight:500">/ Adrian Cai</span></span>
+      </a>
+      <nav class="top-nav" role="tablist" aria-label="个人主页栏目">
+        <button type="button" role="tab" id="tab-home" aria-controls="view-home" aria-selected="true" data-tab="home">主页</button>
+        <button type="button" role="tab" id="tab-work" aria-controls="view-work" aria-selected="false" data-tab="work">作品</button>
+        <button type="button" role="tab" id="tab-creation" aria-controls="view-creation" aria-selected="false" data-tab="creation">创作</button>
+        <button type="button" role="tab" id="tab-resume" aria-controls="view-resume" aria-selected="false" data-tab="resume">简历</button>
+      </nav>
+      <a class="nav-cta" href="#resume" data-route="resume">查看简历 <span class="arrow">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="view-home" role="tabpanel" aria-labelledby="tab-home" data-panel="home">
+      <div class="shell hero">
+        <div>
+          <p class="eyebrow">SOFTWARE TESTING · AI QUALITY · BUILDING</p>
+          <h1>蔡金伟<span>Adrian Cai</span></h1>
+          <p class="role-line">测试开发工程师 · AI Testing 实践者 · 产品构建者</p>
+          <p class="hero-copy">我关注软件测试、自动化实践与 AI 应用质量，也持续把想法做成可以使用的工具。从测试平台到小程序，再到 MCP 与 Agent 测试内容，我希望让技术实践回到真实问题本身。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work" data-route="work">查看作品 <span class="arrow">→</span></a>
+            <a class="button secondary" href="#creation" data-route="creation">浏览创作</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="测试与产品实践主题图示">
+          <div class="hero-card-top"><span>Quality practice / 01</span><span class="status-dot">持续构建</span></div>
+          <div class="loop-visual" aria-hidden="true">
+            <span class="loop-ring"></span><span class="loop-center">QA</span>
+            <span class="orbit-label one">Observe</span><span class="orbit-label two">Test</span><span class="orbit-label three">Improve</span>
+          </div>
+          <div class="hero-card-bottom"><span><strong>测试判断</strong> × 产品实践</span><span>KEEP TESTING / KEEP BUILDING</span></div>
+        </div>
+      </div>
+
+      <div class="shell intro-strip">
+        <span><strong>从质量工程出发，持续探索 AI 与产品。</strong></span>
+        <div class="strip-right"><span>测试平台</span><span>AI Testing</span><span>独立产品</span></div>
+      </div>
+
+      <section class="shell section">
+        <div class="section-head">
+          <div><p class="kicker">WHAT I DO</p><h2>我在做什么</h2></div>
+        </div>
+        <div class="three-grid">
+          <article class="focus-card"><span class="focus-number">01 / QUALITY</span><h3>软件测试与质量工程</h3><p>从业务风险出发，关注测试方法、自动化实践和质量交付。</p></article>
+          <article class="focus-card"><span class="focus-number">02 / AI TESTING</span><h3>AI 应用测试</h3><p>持续学习大模型、RAG、Agent 与 MCP 的测试和安全评估。</p></article>
+          <article class="focus-card"><span class="focus-number">03 / PRODUCT</span><h3>独立产品实践</h3><p>把需求、实现与真实使用连起来，在做产品的过程中验证判断。</p></article>
+        </div>
+      </section>
+
+      <section class="shell section work-preview">
+        <div class="section-head">
+          <div><p class="kicker">SELECTED WORK</p><h2>精选作品</h2></div>
+          <a class="text-link" href="#work" data-route="work">查看全部作品 <span class="arrow">→</span></a>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-art dark" aria-label="自动化测试平台界面示意"><span class="art-caption">TEST AUTOMATION / FLOW</span><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="dash"><div class="dash-side"><i></i><i></i><i></i></div><div class="dash-main"><div class="dash-title"></div><div class="dash-rows"><i></i><i></i><i></i></div></div></div></div></div>
+            <div class="project-copy"><div class="project-meta"><span class="tag">自动化测试</span><span>平台实践</span></div><h3>自动化测试平台</h3><p>围绕自动化测试平台化实践展开，项目介绍与演示入口可直接查看。</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
+          </article>
+          <article class="project-card">
+            <div class="project-art bead" aria-label="拼豆图纸像素示意"><span class="art-caption">PHOTO TO BEAD PATTERN</span><div class="bead-canvas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">图纸 · 色号 · 下载</span></div>
+            <div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>从上传图片到生成拼豆图纸，探索编辑、材料清单和下载到本地照着拼的完整流程。</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section creation-teaser">
+        <div class="section-head"><div><p class="kicker">WRITING & VIDEO</p><h2>创作与分享</h2></div><a class="text-link" href="#creation" data-route="creation">去看创作 <span class="arrow">→</span></a></div>
+        <div class="creation-row">
+          <article class="account-card"><div><span class="account-mark">质</span><h3>质量引擎</h3><p>个人公众号 · 软件测试与 AI 应用质量</p></div><a class="text-link" href="#resume" data-route="resume">查看公众号二维码 <span class="arrow">→</span></a></article>
+          <article class="course-card"><p class="kicker">MCP TESTING SERIES</p><div class="course-list">
+            <a href="#" data-course="mcp-scope"><span>MCP 到底应该测试什么</span><small>视频链接待补充</small></a>
+            <a href="#" data-course="mcp-inspector"><span>MCP Inspector 直接测 Tool</span><small>视频链接待补充</small></a>
+            <a href="#" data-course="mcp-auth"><span>MCP 身份认证测试</span><small>视频链接待补充</small></a>
+            <a href="#creation" data-route="creation"><span>查看课程卡片</span><small>课程系列 →</small></a>
+          </div></article>
+        </div>
+      </section>
+
+      <section class="shell section"><div class="closing"><h2>想了解项目细节、测试实践，或我的完整经历？</h2><a class="button" href="#resume" data-route="resume">打开个人简历 <span class="arrow">↗</span></a></div></section>
+    </section>
+
+    <section class="panel" id="view-work" role="tabpanel" aria-labelledby="tab-work" data-panel="work" hidden>
+      <div class="shell page-heading"><div><p class="kicker">PROJECTS / 02</p><h1>做过的事，<br />留下可验证的结果。</h1></div><p>这里收录测试平台、AI 测试实践与独立产品。每个项目都从真实问题出发，具体功能以项目实际页面和后续补充材料为准。</p></div>
+      <div class="shell project-grid full">
+        <article class="project-card"><div class="project-art dark" aria-label="自动化测试平台界面示意"><span class="art-caption">TEST AUTOMATION / FLOW</span><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="dash"><div class="dash-side"><i></i><i></i><i></i></div><div class="dash-main"><div class="dash-title"></div><div class="dash-rows"><i></i><i></i><i></i></div></div></div></div></div><div class="project-copy"><div class="project-meta"><span class="tag">自动化测试 · TestOps</span><span>项目作品</span></div><h3>自动化测试平台</h3><p>自动化测试平台项目。可从项目网站了解当前呈现，也可查看代码仓库。</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
+        <article class="project-card"><div class="project-art rag" aria-label="AI 测试用例工作台界面示意"><span class="art-caption">AI TEST CASE WORKBENCH</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">需求 → 测试点 → 用例</span></div><div class="project-copy"><div class="project-meta"><span class="tag">AI + Testing</span><span>项目作品</span></div><h3>AI 测试用例生成平台</h3><p>围绕需求理解、测试点提取和结构化用例生成的 AI 测试实践。</p><div class="project-links"><a href="https://ai-case.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/AI-TestOps" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
+        <article class="project-card"><div class="project-art bead" aria-label="拼豆图纸像素示意"><span class="art-caption">PHOTO TO BEAD PATTERN</span><div class="bead-canvas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">图纸 · 色号 · 下载</span></div><div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>AI 拼豆图纸生成器：把图片转成拼豆图纸，支持编辑、查看材料清单与施工图，并下载到手机照着制作。项目曾完成内测与拼豆店部署探索，目前暂停运营。</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a></div></div></article>
+        <article class="project-card"><div class="project-art" aria-label="AI 专项测试服务方向示意"><span class="art-caption">AI QUALITY / SERVICE</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">应用体检 · RAG · MCP</span></div><div class="project-copy"><div class="project-meta"><span class="tag">建设中</span><span>服务探索</span></div><h3>AI 专项测试服务平台</h3><p>正在整理 AI 应用上线体检、RAG 知识库专项评测与 Agent / MCP 业务安全测试的服务内容和交付样例。</p><div class="project-links"><span class="pending">案例和服务入口持续补充</span></div></div></article>
+      </div>
+      <div class="shell section" style="padding-top:0"><div class="closing"><h2>作品还在持续更新，欢迎从公开项目了解当前实践。</h2><a class="button" href="#creation" data-route="creation">看看我分享的内容 <span class="arrow">→</span></a></div></div>
+    </section>
+
+    <section class="panel" id="view-creation" role="tabpanel" aria-labelledby="tab-creation" data-panel="creation" hidden>
+      <div class="shell creation-hero"><p class="kicker">CREATION / 03</p><h1>把实践拆开讲，<br />让更多人能上手。</h1><p>我通过公众号和短视频分享测试、AI 应用质量与工具实践。已发布的 MCP 课程卡片会直接打开抖音原视频。</p></div>
+      <div class="shell creator-grid">
+        <article class="creator-card main"><span class="creator-kicker">WECHAT OFFICIAL ACCOUNT</span><span class="creator-stamp">质</span><h2>质量引擎</h2><p>围绕软件测试、AI Testing 与质量工程分享实践和思考。</p><div class="creator-bottom"><strong>个人公众号</strong><a href="#resume" data-route="resume">查看公众号二维码 →</a></div></article>
+        <article class="creator-card"><span class="creator-kicker">DOUYIN / VIDEO COURSES</span><span class="creator-stamp">▶</span><h2>测试课程与视频</h2><p>把真实测试问题拆成短课程，聚焦概念解释、测试方法和安全边界。</p><div class="creator-bottom"><strong>抖音自制课程</strong><a href="https://www.douyin.com/user/MS4wLjABAAAAsLmn7gD6MhEIewTogTn2c7ykCM7Gl3ZUWg5sZLj_aa0z-3URUlRz6fNfBENE0aLQ" target="_blank" rel="noopener noreferrer">访问抖音主页 ↗</a></div></article>
+      </div>
+      <section class="shell course-section">
+        <div class="section-head"><div><p class="kicker">MCP TESTING SERIES</p><h2>MCP 测试系列</h2></div><p style="max-width:390px;margin:0;color:var(--muted);font-size:13px;line-height:1.8">课程内容来自抖音公开视频，点击已发布课程即可观看。权限控制专题保留卡片，待补对应视频链接。</p></div>
+        <div class="course-grid">
+          <a class="course-tile" href="#" data-course="mcp-scope"><div><span class="lesson">01 / TEST SCOPE</span><h3>MCP 到底应该测试什么</h3><p>从 MCP 概念、Inspector 到认证授权和 Agent 工具选择，建立可执行的测试地图。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-inspector"><div><span class="lesson">02 / TOOL TESTING</span><h3>MCP Inspector 直接测 Tool</h3><p>连接 MCP Server，检查 Tool Schema，并验证正常与异常参数的返回结果。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-auth"><div><span class="lesson">03 / AUTHENTICATION</span><h3>MCP 身份认证测试</h3><p>对比未携带 Key、伪造 Key 与有效 Key 时的响应，区分 HTTP 层和 MCP 层结果。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-permission"><div><span class="lesson">04 / AUTHORIZATION</span><h3>MCP 权限控制怎么测</h3><p>围绕身份、授权边界、工具调用权限和副作用设计验证场景。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+        </div>
+        <p class="course-note">前三条课程已连接抖音原视频；权限控制专题的视频链接待补充。</p>
+      </section>
+      <div class="shell section" style="padding-top:0"><div class="closing"><h2>想看项目之外的经验和职业经历？</h2><a class="button" href="#resume" data-route="resume">查看简历 <span class="arrow">↗</span></a></div></div>
+    </section>
+
+    <section class="panel" id="view-resume" role="tabpanel" aria-labelledby="tab-resume" data-panel="resume" hidden>
+      <div class="shell resume-shell">
+        <div class="resume-hero profile">
+          <div>
+            <p class="kicker">RÉSUMÉ / 04</p>
+            <h1 class="resume-name">蔡金伟</h1>
+            <p class="resume-title">AI 测试开发工程师 · 6 年经验</p>
+            <p class="resume-summary">具备从需求梳理、AI 辅助开发、测试验证到部署迭代的端到端交付经验。长期从事业务测试与自动化建设，近年持续探索 LLM 测试、AI 测试工具和独立产品实践。</p>
+            <div class="resume-contact" aria-label="联系方式">
+              <a href="tel:13503450662">电话　13503450662</a>
+              <a href="mailto:imacaiy@gmail.com">邮箱　imacaiy@gmail.com</a>
+              <a href="https://github.com/Adrian-Cai" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <aside class="resume-highlight"><span>TEST DEVELOPMENT</span><strong>6 年</strong><small>软件测试、自动化工程与 AI 应用实践</small></aside>
+        </div>
+
+        <section class="resume-block">
+          <div class="section-head"><div><p class="kicker">CORE SKILLS</p><h2>专业技能</h2></div></div>
+          <div class="resume-skill-grid">
+            <article class="resume-skill"><span>END-TO-END DELIVERY</span><p>具备 FDE 式端到端交付能力，覆盖需求梳理、AI 开发、测试验证、部署上线与迭代。</p></article>
+            <article class="resume-skill"><span>AI CODING & LLM</span><p>熟练使用 Codex、OpenCode 等 AI Coding 工具辅助开发、调试与排障；运用 LLM 进行需求分析、测试设计、用例生成与缺陷定位。</p></article>
+            <article class="resume-skill"><span>TEST DESIGN</span><p>具备完整测试设计能力，覆盖功能、场景、边界值与异常流；能独立编写测试计划、用例和报告，评估测试范围与资源投入。</p></article>
+            <article class="resume-skill"><span>AUTOMATION</span><p>积累 1k+ 自动化用例交付经验，熟悉 pytest、requests、SeleniumBase；熟悉 Git、Docker、Jenkins 与 CI/CD 流程。</p></article>
+            <article class="resume-skill"><span>TEST DATA & PLATFORMS</span><p>设计并实现测试数据构造工具，支持充值、订单、活动等复杂业务快速造数；具备网站、小程序及 AI 应用落地和生产部署经验。</p></article>
+            <article class="resume-skill"><span>TOOLS & OPERATIONS</span><p>熟悉 Charles、Apifox、DBeaver、Linux、SQL、Redis 与日志分析，具备自动化测试、服务部署和问题定位经验。</p></article>
+          </div>
+        </section>
+
+        <section class="resume-block">
+          <div class="section-head"><div><p class="kicker">EXPERIENCE</p><h2>工作经历</h2></div></div>
+          <div class="resume-timeline">
+            <article class="resume-role">
+              <div class="resume-role-head"><div><h3>北京外企德科</h3><p>测试开发 / 大众点评免费试项目</p></div><span class="resume-role-date">2025.11 – 2026.05</span></div>
+              <div class="resume-role-stats"><span>交付需求 70+</span><span>跟踪缺陷 150+</span><span>准时上线率约 95%</span></div>
+              <ul>
+                <li>负责免费菜业务测试，围绕活动创建、审核、抽奖分发等核心链路设计端到端方案，校验多端数据一致性。</li>
+                <li>参与需求分析、方案设计、问题定位及上线验证，推动业务需求按期交付。</li>
+                <li>基于 AI 能力搭建测试辅助工具，支持结构化测试用例生成，提升用例设计与评审效率。</li>
+                <li>开发测试数据构造工具，支持充值、订单生成、活动创建等场景，降低测试环境造数成本。</li>
+              </ul>
+              <details class="project-detail"><summary>代表项目与成果：大众点评免费试</summary><div class="project-detail-content"><p>面向本地生活服务商家的营销获客与评价管理平台，通过免费体验换取真实评价，帮助商家积累评价并为用户提供服务体验。</p><p class="subhead">项目成果</p><ul><li>负责服务的读接口流量回放，将线上真实流量转化为接口回归用例，服务接口覆盖率约 54%。</li><li>结合业务场景沉淀测试用例生成 Skills，辅助梳理测试点并生成用例。</li><li>开发充值、订单生成和活动创建等测试数据构造工具，支撑场景复现。</li><li>基于内部压测平台执行并发领取压测，验证性能指标及库存扣减准确性。</li></ul></div></details>
+            </article>
+
+            <article class="resume-role">
+              <div class="resume-role-head"><div><h3>北京字跳网络</h3><p>测试开发 / 财经智能语音机器人平台</p></div><span class="resume-role-date">2025.01 – 2025.10</span></div>
+              <div class="resume-role-stats"><span>交付需求 20+</span><span>自动化用例 100+</span><span>需求准时率 99%±</span></div>
+              <ul>
+                <li>参与平台迭代测试，设计并执行覆盖核心业务与边界场景的测试用例。</li>
+                <li>负责接口自动化建设，编写维护 100+ 用例并纳入冒烟回归集。</li>
+                <li>推动解决高优线上风险，制定回归隔离与话术管控方案，完善风险场景库。</li>
+                <li>参与日常 Oncall 支撑，定位并推动修复线上问题，保障平台稳定运行。</li>
+                <li>项目整体测试交付无重大事故，需求上线准时率稳定保持在 99%±。</li>
+              </ul>
+              <details class="project-detail"><summary>代表项目与成果：财经智能语音机器人平台</summary><div class="project-detail-content"><p>面向财经细分场景的语音互动外呼机器人平台，支持文本与语音交互、外呼电话等能力，覆盖能力、机器人、知识与运营管理。</p><p class="subhead">项目成果</p><ul><li>全程参与项目交付，从需求评审到上线验收全链路介入。</li><li>在需求与技术评审阶段识别不明确点，向产品确认功能预期，确保测试覆盖与业务逻辑一致。</li><li>基于大模型生成并结合业务场景优化用例，补充边界与异常场景。</li><li>编写维护接口自动化用例 80+，覆盖核心业务链路。</li><li>跟踪缺陷全生命周期并输出测试报告，实现测试结果可追溯。</li></ul></div></details>
+            </article>
+
+            <article class="resume-role">
+              <div class="resume-role-head"><div><h3>浙江快手信息</h3><p>测试开发 / 电商供应链与达人选品</p></div><span class="resume-role-date">2022.07 – 2025</span></div>
+              <div class="resume-role-stats"><span>交付需求 200+</span><span>产出用例 30k+</span><span>自动化 Case 1k+</span><span>准时交付率约 95%</span></div>
+              <ul>
+                <li>跟踪解决关键缺陷 180+；协助 Jenkins 自动化测试流水线实现并发、多节点分布式运行与失败重试。</li>
+                <li>维护覆盖核心流程 150+ 的自动化脚本库，覆盖货架上下架、半提单结算等场景。</li>
+                <li>参与流量回放落地，完成 290+ 接口数据回归测试，发现并解决 15 例数据问题。</li>
+                <li>运用 ChatGPT、DeepSeek 等 AI 工具优化脚本，提升测试效率。</li>
+              </ul>
+              <details class="project-detail"><summary>代表项目 1：快手快分销商家平台</summary><div class="project-detail-content"><p>连接货主与达人，围绕计划管理、找达人、找团长、效果看板和寄样管理，帮助商家推广商品。</p><p class="subhead">项目成果</p><ul><li>累计交付需求 50+，跟踪缺陷 40+，产出用例 8k+，需求准时上线率约 95%。</li><li>从 0 到 1 维护 UI 自动化，累计覆盖 290+ 核心功能和模块。</li><li>推进流量回放落地，累计交付 180+ 接口数据回归。</li><li>制定冒烟测试准入规范及接口对齐标准，核心功能覆盖率达 90%。</li><li>项目无高优问题或故障，无因测试导致的需求延期；测试/开发联调比为 25.6%。</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目 2：快手分销达人选品中心 APP</summary><div class="project-detail-content"><p>面向快手达人和商家的选品工具，包含首页推荐、搜索、带货邀约、货架管理、收益统计和申样等功能。</p><p class="subhead">项目成果</p><ul><li>负责 APP 端核心业务测试，保障多版本需求稳定交付。</li><li>参与 Android 与 iOS 双端 UI 自动化建设，维护核心业务用例。</li><li>推动自动化与 CI/CD 集成，缩短版本回归执行耗时。</li><li>累计输出 80+ 测试报告，实现问题可追溯。</li><li>制定冒烟准入标准，筛选 190+ 核心用例，提测通过率从 50% 提升至 85%。</li></ul></div></details>
+            </article>
+
+            <article class="resume-role">
+              <div class="resume-role-head"><div><h3>上海同鑫科技</h3><p>测试工程师 / eHR 一体化云管理平台</p></div><span class="resume-role-date">2020.03 – 2022.06</span></div>
+              <div class="resume-role-stats"><span>参与版本迭代 120+</span><span>发现缺陷 130+</span><span>准时交付率约 90%</span></div>
+              <ul>
+                <li>参与需求评审并识别风险，设计覆盖功能、安全、性能及边界场景的测试用例。</li>
+                <li>跟踪缺陷生命周期，推动修复并分析根因，提出预防性改进建议。</li>
+                <li>基于自动化框架覆盖日常迭代核心链路；与开发共同梳理性能场景，使用 JMeter 分析瓶颈。</li>
+                <li>开展兼容性、SQL 注入基础验证及数据一致性验证。</li>
+              </ul>
+              <details class="project-detail"><summary>代表项目与成果：同鑫 eHR 一体化云管理平台服务端测试</summary><div class="project-detail-content"><p>基于企业 Intranet / Internet 的员工信息服务系统，覆盖组织规划、人员、考勤、薪资、培训、绩效和招聘管理。</p><p class="subhead">项目成果</p><ul><li>参与需求评审、测试计划制定、用例设计与交叉评审。</li><li>使用 Charles 协助定位问题并推进修复。</li><li>独立负责 120+ 需求迭代上线，发现缺陷 150+。</li><li>编写维护接口与 UI 自动化脚本，保障产品稳定性。</li><li>使用 JMeter 对新上线接口进行常态化压测，验证高负载链路。</li><li>开展兼容性、基础安全及数据一致性验证。</li></ul></div></details>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-block">
+          <div class="section-head"><div><p class="kicker">PROJECTS & PRACTICE</p><h2>个人项目与工程实践</h2></div></div>
+          <div class="resume-project-grid">
+            <article class="resume-project"><div class="resume-project-top"><div><span class="project-kind">WECHAT MINI PROGRAM</span><h3>小露拼豆</h3></div><img class="resume-project-qr" src="/assets/xiaolu-mini-program-qr.png" alt="小露拼豆微信小程序二维码" /></div><p>面向拼豆爱好者的图片转拼豆图小程序，支持上传图片生成可编辑图纸，以及 AI 图像创作、图案编辑、坐标辅助、成品预览、材料清单、施工图和色板生成。作品可保存、同步和下载。</p><div class="resume-project-footer">扫描二维码查看小程序</div></article>
+            <article class="resume-project"><div class="resume-project-top"><div><span class="project-kind">WECHAT OFFICIAL ACCOUNT</span><h3>质量引擎</h3></div><img class="resume-project-qr" src="/assets/quality-engine-qr.png" alt="质量引擎微信公众号二维码" /></div><p>围绕 AI 时代的软件质量工程，分享测试开发、自动化测试、质量分析与工程效率实践，结合真实项目沉淀系列文章、案例和工具方法。</p><div class="resume-project-footer">扫描二维码关注公众号</div></article>
+          </div>
+        </section>
+        <p class="resume-skill-summary">简历内容根据你提供的 PDF 整理；未在 PDF 中出现的教育经历或其他信息未作补写。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer"><span>© <span id="year"></span> 蔡金伟 / Adrian Cai</span><span>KEEP TESTING · KEEP BUILDING</span></footer>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+    const courseLinks = {
+      "mcp-scope": "https://www.douyin.com/video/7685423366982913343",
+      "mcp-inspector": "https://www.douyin.com/video/7685696304990719278",
+      "mcp-auth": "https://www.douyin.com/video/7685786435126873371",
+      "mcp-permission": ""
+    };
+    const validViews = new Set(["home", "work", "creation", "resume"]);
+    const tabs = [...document.querySelectorAll("[data-tab]")];
+    const panels = [...document.querySelectorAll("[data-panel]")];
+    const toast = document.querySelector(".toast");
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
+    }
+    function setView(view, updateHash = true) {
+      const target = validViews.has(view) ? view : "home";
+      tabs.forEach(tab => {
+        const selected = tab.dataset.tab === target;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.dataset.panel !== target; });
+      if (updateHash && location.hash !== `#${target}`) history.pushState({view: target}, "", `#${target}`);
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => setView(tab.dataset.tab));
+      tab.addEventListener("keydown", event => {
+        if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[next].focus();
+        setView(tabs[next].dataset.tab);
+      });
+    });
+    document.querySelectorAll("[data-route]").forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        setView(link.dataset.route);
+      });
+    });
+    document.querySelectorAll("[data-course]").forEach(card => {
+      const href = courseLinks[card.dataset.course]?.trim();
+      if (href) {
+        card.href = href;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.dataset.ready = "true";
+        const status = card.querySelector("small, .course-cta span");
+        if (status) status.textContent = "打开视频 ↗";
+      }
+      card.addEventListener("click", event => {
+        if (!courseLinks[card.dataset.course]?.trim()) {
+          event.preventDefault();
+          showToast("这条课程的视频链接还没补充");
+        }
+      });
+    });
+    window.addEventListener("popstate", () => setView(location.hash.slice(1), false));
+    window.addEventListener("hashchange", () => setView(location.hash.slice(1), false));
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setView(location.hash.slice(1), false);
+  </script>
+</body>
+</html>
