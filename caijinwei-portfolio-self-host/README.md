@@ -30,7 +30,7 @@
 
 ### 服务器
 
-域名 index.wiac.xyz 的 DNS 和防火墙需允许公网访问 TCP 80、443；启用 IPv6 时也需允许对应入站流量Caddy 的证书和配置保存在 Compose 命名卷中
+服务器已有 Nginx 占用公网 80/443 时，Compose 将本站点绑定到 `127.0.0.1:18081`；Nginx 负责 `index.wiac.xyz` 的 HTTPS 证书和反向代理。确认 Nginx 该域名的站点配置已转发到 `http://127.0.0.1:18081` 后再启动容器。
 
 ## 发布与运维
 
@@ -49,7 +49,5 @@
       docker compose --project-name caijinwei-portfolio-self-host \
       --file /opt/caijinwei-portfolio/caijinwei-portfolio-self-host/compose.yaml \
       up -d --force-recreate
-
-证书数据保存在 caddy_data 命名卷中停止服务时不要传 --volumes，否则会删除证书数据
 
 若宽带处于运营商 CGNAT，单做路由器端口映射无法让公网访客直连；需要可入站的公网地址，或使用带公网入口的隧道/中转服务器

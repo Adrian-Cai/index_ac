@@ -1,4 +1,4 @@
-index.wiac.xyz {
+http://index.wiac.xyz {
     root * /srv
     file_server
 }
