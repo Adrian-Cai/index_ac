@@ -1,0 +1,29 @@
+main:
+  push:
+    - name: build-and-deploy
+      services:
+        - docker
+      imports:
+        - https://cnb.cool/ImAcaiy/caijinwei-portfolio-secrets/-/blob/main/jenkins.yml
+      stages:
+        - name: 检查静态部署包
+          script: |
+            set -eu
+            test -s caijinwei-portfolio-self-host/Caddyfile
+            test -s caijinwei-portfolio-self-host/dist/index.html
+            test -s caijinwei-portfolio-self-host/dist/assets/xiaolu-mini-program-qr.png
+            test -s caijinwei-portfolio-self-host/dist/assets/quality-engine-qr.png
+            grep -Fqx 'index.wiac.xyz {' caijinwei-portfolio-self-host/Caddyfile
+            # shortcut: 8-character SHA tags; use CNB_COMMIT if a collision occurs.
+            printf '%s' "$CNB_COMMIT_SHORT" | grep -Eq '^[0-9a-f]{8}$'
+        - name: 构建并推送站点镜像
+          script: |
+            set -eu
+            image="$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG_LOWERCASE:$CNB_COMMIT_SHORT"
+            printf '%s' "$CNB_TOKEN" | docker login "$CNB_DOCKER_REGISTRY" \
+              --username "$CNB_TOKEN_USER_NAME" --password-stdin
+            trap 'docker logout "$CNB_DOCKER_REGISTRY" >/dev/null 2>&1 || true' EXIT
+            docker build --pull --tag "$image" .
+            docker push "$image"
+        - name: 触发并等待 Jenkins 部署
+          script: python3 scripts/trigger_jenkins.py

@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: caddy:2-alpine
+    image: ${PORTFOLIO_IMAGE:?PORTFOLIO_IMAGE is required}
     container_name: caijinwei-portfolio
     restart: unless-stopped
     ports:
@@ -8,8 +8,6 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ./dist:/srv:ro
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
 

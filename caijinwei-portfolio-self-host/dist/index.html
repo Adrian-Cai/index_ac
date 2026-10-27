@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f5f5f1" />
-  <meta name="description" content="蔡金伟 / Adrian Cai，测试开发工程师、AI Testing 实践者与产品构建者。" />
-  <title>蔡金伟 / Adrian Cai — 个人主页</title>
+  <meta name="description" content="蔡金伟，测试开发工程师、AI Testing 实践者与产品构建者" />
+  <title>蔡金伟 — 个人主页</title>
   <style>
     :root {
       --paper: #f5f5f1;
@@ -239,13 +239,13 @@
     .project-detail-content .subhead { margin: 11px 0 -8px; color: #526049; font-size: 10px; font-weight: 700; }
     .project-detail ul { font-size: 11px; margin-top: 10px; }
     .resume-project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
-    .resume-project { min-height: 210px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; display: flex; flex-direction: column; justify-content: space-between; }
-    .resume-project-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+    .resume-project { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; display: flex; flex-direction: row; align-items: flex-start; gap: 24px; }
+    .resume-project-copy { flex: 1; min-width: 0; }
     .resume-project h3 { margin: 0; font-size: 19px; letter-spacing: -.045em; }
     .resume-project .project-kind { display: inline-block; margin-bottom: 8px; color: #71824d; font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
-    .resume-project p { margin: 11px 0 0; color: #68726a; font-size: 11px; line-height: 1.8; }
+    .resume-project p { margin: 9px 0 0; color: #68726a; font-size: 11px; line-height: 1.8; }
     .resume-project-qr { width: 112px; height: 112px; flex: 0 0 112px; object-fit: contain; border: 1px solid #e9ece6; border-radius: 10px; background: #fff; }
-    .resume-project-footer { margin-top: 16px; padding-top: 11px; border-top: 1px solid #e9ece6; color: #7a837c; font-size: 10px; }
+    .resume-project-footer { margin-top: 14px; padding-top: 10px; border-top: 1px solid #e9ece6; color: #7a837c; font-size: 10px; }
     .resume-skill-summary { margin: 16px 0 0; color: #788178; font-size: 10px; }
     .toast { position: fixed; z-index: 20; left: 50%; bottom: 24px; transform: translate(-50%, 15px); padding: 11px 16px; border-radius: 999px; background: #1c2220; color: #fff; box-shadow: 0 8px 25px rgba(0,0,0,.18); font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
@@ -311,7 +311,7 @@
       .resume-role { padding: 18px; }
       .resume-role-head { flex-direction: column; gap: 9px; }
       .resume-role-date { order: -1; }
-      .resume-project { padding: 18px; }
+      .resume-project { padding: 18px; gap: 16px; }
       .resume-project-qr { width: 90px; height: 90px; flex-basis: 90px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -323,7 +323,7 @@
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="#home" data-route="home" aria-label="返回主页">
-        <span class="brand-mark">AC.</span><span>蔡金伟 <span style="color:#8a928a;font-weight:500">/ Adrian Cai</span></span>
+        <span class="brand-mark">AC.</span>
       </a>
       <nav class="top-nav" role="tablist" aria-label="个人主页栏目">
         <button type="button" role="tab" id="tab-home" aria-controls="view-home" aria-selected="true" data-tab="home">主页</button>
@@ -340,9 +340,9 @@
       <div class="shell hero">
         <div>
           <p class="eyebrow">SOFTWARE TESTING · AI QUALITY · BUILDING</p>
-          <h1>蔡金伟<span>Adrian Cai</span></h1>
+          <h1>蔡金伟<span></span></h1>
           <p class="role-line">测试开发工程师 · AI Testing 实践者 · 产品构建者</p>
-          <p class="hero-copy">我关注软件测试、自动化实践与 AI 应用质量，也持续把想法做成可以使用的工具。从测试平台到小程序，再到 MCP 与 Agent 测试内容，我希望让技术实践回到真实问题本身。</p>
+          <p class="hero-copy">我关注软件测试、自动化实践与 AI 应用质量，也持续把想法做成可以使用的工具从测试平台到小程序，再到 MCP 与 Agent 测试内容，我希望让技术实践回到真实问题本身</p>
           <div class="hero-actions">
             <a class="button primary" href="#work" data-route="work">查看作品 <span class="arrow">→</span></a>
             <a class="button secondary" href="#creation" data-route="creation">浏览创作</a>
@@ -359,7 +359,7 @@
       </div>
 
       <div class="shell intro-strip">
-        <span><strong>从质量工程出发，持续探索 AI 与产品。</strong></span>
+        <span><strong>从质量工程出发，持续探索 AI 与产品</strong></span>
         <div class="strip-right"><span>测试平台</span><span>AI Testing</span><span>独立产品</span></div>
       </div>
 
@@ -368,9 +368,9 @@
           <div><p class="kicker">WHAT I DO</p><h2>我在做什么</h2></div>
         </div>
         <div class="three-grid">
-          <article class="focus-card"><span class="focus-number">01 / QUALITY</span><h3>软件测试与质量工程</h3><p>从业务风险出发，关注测试方法、自动化实践和质量交付。</p></article>
-          <article class="focus-card"><span class="focus-number">02 / AI TESTING</span><h3>AI 应用测试</h3><p>持续学习大模型、RAG、Agent 与 MCP 的测试和安全评估。</p></article>
-          <article class="focus-card"><span class="focus-number">03 / PRODUCT</span><h3>独立产品实践</h3><p>把需求、实现与真实使用连起来，在做产品的过程中验证判断。</p></article>
+          <article class="focus-card"><span class="focus-number">01 / QUALITY</span><h3>软件测试与质量工程</h3><p>从业务风险出发，关注测试方法、自动化实践和质量交付</p></article>
+          <article class="focus-card"><span class="focus-number">02 / AI TESTING</span><h3>AI 应用测试</h3><p>持续学习大模型、RAG、Agent 与 MCP 的测试和安全评估</p></article>
+          <article class="focus-card"><span class="focus-number">03 / PRODUCT</span><h3>独立产品实践</h3><p>把需求、实现与真实使用连起来，在做产品的过程中验证判断</p></article>
         </div>
       </section>
 
@@ -382,11 +382,11 @@
         <div class="project-grid">
           <article class="project-card">
             <div class="project-art dark" aria-label="自动化测试平台界面示意"><span class="art-caption">TEST AUTOMATION / FLOW</span><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="dash"><div class="dash-side"><i></i><i></i><i></i></div><div class="dash-main"><div class="dash-title"></div><div class="dash-rows"><i></i><i></i><i></i></div></div></div></div></div>
-            <div class="project-copy"><div class="project-meta"><span class="tag">自动化测试</span><span>平台实践</span></div><h3>自动化测试平台</h3><p>围绕自动化测试平台化实践展开，项目介绍与演示入口可直接查看。</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
+            <div class="project-copy"><div class="project-meta"><span class="tag">自动化测试</span><span>平台实践</span></div><h3>自动化测试平台</h3><p>围绕自动化测试平台化实践展开，项目介绍与演示入口可直接查看</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
           </article>
           <article class="project-card">
             <div class="project-art bead" aria-label="拼豆图纸像素示意"><span class="art-caption">PHOTO TO BEAD PATTERN</span><div class="bead-canvas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">图纸 · 色号 · 下载</span></div>
-            <div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>从上传图片到生成拼豆图纸，探索编辑、材料清单和下载到本地照着拼的完整流程。</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a></div></div>
+            <div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>从上传图片到生成拼豆图纸，探索编辑、材料清单和下载到本地照着拼的完整流程</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a></div></div>
           </article>
         </div>
       </section>
@@ -408,31 +408,30 @@
     </section>
 
     <section class="panel" id="view-work" role="tabpanel" aria-labelledby="tab-work" data-panel="work" hidden>
-      <div class="shell page-heading"><div><p class="kicker">PROJECTS / 02</p><h1>做过的事，<br />留下可验证的结果。</h1></div><p>这里收录测试平台、AI 测试实践与独立产品。每个项目都从真实问题出发，具体功能以项目实际页面和后续补充材料为准。</p></div>
+      <div class="shell page-heading"><div><p class="kicker">PROJECTS / 02</p><h1>做过的事，<br />留下可验证的结果</h1></div><p>这里收录测试平台、AI 测试实践与独立产品每个项目都从真实问题出发，具体功能以项目实际页面和后续补充材料为准</p></div>
       <div class="shell project-grid full">
-        <article class="project-card"><div class="project-art dark" aria-label="自动化测试平台界面示意"><span class="art-caption">TEST AUTOMATION / FLOW</span><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="dash"><div class="dash-side"><i></i><i></i><i></i></div><div class="dash-main"><div class="dash-title"></div><div class="dash-rows"><i></i><i></i><i></i></div></div></div></div></div><div class="project-copy"><div class="project-meta"><span class="tag">自动化测试 · TestOps</span><span>项目作品</span></div><h3>自动化测试平台</h3><p>自动化测试平台项目。可从项目网站了解当前呈现，也可查看代码仓库。</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
-        <article class="project-card"><div class="project-art rag" aria-label="AI 测试用例工作台界面示意"><span class="art-caption">AI TEST CASE WORKBENCH</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">需求 → 测试点 → 用例</span></div><div class="project-copy"><div class="project-meta"><span class="tag">AI + Testing</span><span>项目作品</span></div><h3>AI 测试用例生成平台</h3><p>围绕需求理解、测试点提取和结构化用例生成的 AI 测试实践。</p><div class="project-links"><a href="https://ai-case.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/AI-TestOps" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
-        <article class="project-card"><div class="project-art bead" aria-label="拼豆图纸像素示意"><span class="art-caption">PHOTO TO BEAD PATTERN</span><div class="bead-canvas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">图纸 · 色号 · 下载</span></div><div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>AI 拼豆图纸生成器：把图片转成拼豆图纸，支持编辑、查看材料清单与施工图，并下载到手机照着制作。项目曾完成内测与拼豆店部署探索，目前暂停运营。</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a></div></div></article>
-        <article class="project-card"><div class="project-art" aria-label="AI 专项测试服务方向示意"><span class="art-caption">AI QUALITY / SERVICE</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">应用体检 · RAG · MCP</span></div><div class="project-copy"><div class="project-meta"><span class="tag">建设中</span><span>服务探索</span></div><h3>AI 专项测试服务平台</h3><p>正在整理 AI 应用上线体检、RAG 知识库专项评测与 Agent / MCP 业务安全测试的服务内容和交付样例。</p><div class="project-links"><span class="pending">案例和服务入口持续补充</span></div></div></article>
+        <article class="project-card"><div class="project-art dark" aria-label="自动化测试平台界面示意"><span class="art-caption">TEST AUTOMATION / FLOW</span><div class="mini-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="dash"><div class="dash-side"><i></i><i></i><i></i></div><div class="dash-main"><div class="dash-title"></div><div class="dash-rows"><i></i><i></i><i></i></div></div></div></div></div><div class="project-copy"><div class="project-meta"><span class="tag">自动化测试 · TestOps</span><span>项目作品</span></div><h3>自动化测试平台</h3><p>自动化测试平台项目可从项目网站了解当前呈现，也可查看代码仓库</p><div class="project-links"><a href="https://autotest.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/Automation_Platform" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
+        <article class="project-card"><div class="project-art rag" aria-label="AI 测试用例工作台界面示意"><span class="art-caption">AI TEST CASE WORKBENCH</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">需求 → 测试点 → 用例</span></div><div class="project-copy"><div class="project-meta"><span class="tag">AI + Testing</span><span>项目作品</span></div><h3>AI 测试用例生成平台</h3><p>围绕需求理解、测试点提取和结构化用例生成的 AI 测试实践</p><div class="project-links"><a href="https://ai-case.wiac.xyz/" target="_blank" rel="noopener noreferrer">打开项目网站 ↗</a><a href="https://github.com/acai1998/AI-TestOps" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
+        <article class="project-card"><div class="project-art bead" aria-label="拼豆图纸像素示意"><span class="art-caption">PHOTO TO BEAD PATTERN</span><div class="bead-canvas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">图纸 · 色号 · 下载</span></div><div class="project-copy"><div class="project-meta"><span class="tag">微信小程序</span><span>产品实践</span></div><h3>小露拼豆</h3><p>AI 拼豆图纸生成器：把图片转成拼豆图纸，支持编辑、查看材料清单与施工图，并下载到手机照着制作项目曾完成内测与拼豆店部署探索，目前暂停运营</p><div class="project-links"><a href="#resume" data-route="resume">查看小程序二维码 →</a><a href="https://github.com/Adrian-Cai/pindou-studio.git" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div></article>
+        <article class="project-card"><div class="project-art" aria-label="AI 专项测试服务方向示意"><span class="art-caption">AI QUALITY / SERVICE</span><div class="signal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="bead-note">应用体检 · RAG · MCP</span></div><div class="project-copy"><div class="project-meta"><span class="tag">建设中</span><span>服务探索</span></div><h3>AI 专项测试服务平台</h3><p>正在整理 AI 应用上线体检、RAG 知识库专项评测与 Agent / MCP 业务安全测试的服务内容和交付样例</p><div class="project-links"><span class="pending">案例和服务入口持续补充</span></div></div></article>
       </div>
-      <div class="shell section" style="padding-top:0"><div class="closing"><h2>作品还在持续更新，欢迎从公开项目了解当前实践。</h2><a class="button" href="#creation" data-route="creation">看看我分享的内容 <span class="arrow">→</span></a></div></div>
+      <div class="shell section" style="padding-top:0"><div class="closing"><h2>作品还在持续更新，欢迎从公开项目了解当前实践</h2><a class="button" href="#creation" data-route="creation">看看我分享的内容 <span class="arrow">→</span></a></div></div>
     </section>
 
     <section class="panel" id="view-creation" role="tabpanel" aria-labelledby="tab-creation" data-panel="creation" hidden>
-      <div class="shell creation-hero"><p class="kicker">CREATION / 03</p><h1>把实践拆开讲，<br />让更多人能上手。</h1><p>我通过公众号和短视频分享测试、AI 应用质量与工具实践。已发布的 MCP 课程卡片会直接打开抖音原视频。</p></div>
+      <div class="shell creation-hero"><p class="kicker">CREATION / 03</p><h1>把实践拆开讲，<br />让更多人能上手</h1><p>我通过公众号和短视频分享测试、AI 应用质量与工具实践</p></div>
       <div class="shell creator-grid">
-        <article class="creator-card main"><span class="creator-kicker">WECHAT OFFICIAL ACCOUNT</span><span class="creator-stamp">质</span><h2>质量引擎</h2><p>围绕软件测试、AI Testing 与质量工程分享实践和思考。</p><div class="creator-bottom"><strong>个人公众号</strong><a href="#resume" data-route="resume">查看公众号二维码 →</a></div></article>
-        <article class="creator-card"><span class="creator-kicker">DOUYIN / VIDEO COURSES</span><span class="creator-stamp">▶</span><h2>测试课程与视频</h2><p>把真实测试问题拆成短课程，聚焦概念解释、测试方法和安全边界。</p><div class="creator-bottom"><strong>抖音自制课程</strong><a href="https://www.douyin.com/user/MS4wLjABAAAAsLmn7gD6MhEIewTogTn2c7ykCM7Gl3ZUWg5sZLj_aa0z-3URUlRz6fNfBENE0aLQ" target="_blank" rel="noopener noreferrer">访问抖音主页 ↗</a></div></article>
+        <article class="creator-card main"><span class="creator-kicker">WECHAT OFFICIAL ACCOUNT</span><span class="creator-stamp">质</span><h2>质量引擎</h2><p>围绕软件测试、AI Testing 与质量工程分享实践和思考</p><div class="creator-bottom"><strong>个人公众号</strong><a href="#resume" data-route="resume">查看公众号二维码 →</a></div></article>
+        <article class="creator-card"><span class="creator-kicker">DOUYIN / VIDEO COURSES</span><span class="creator-stamp">▶</span><h2>测试课程与视频</h2><p>把真实测试问题拆成短课程，聚焦概念解释、测试方法和安全边界</p><div class="creator-bottom"><strong>抖音自制课程</strong><a href="https://www.douyin.com/user/MS4wLjABAAAAsLmn7gD6MhEIewTogTn2c7ykCM7Gl3ZUWg5sZLj_aa0z-3URUlRz6fNfBENE0aLQ" target="_blank" rel="noopener noreferrer">访问抖音主页 ↗</a></div></article>
       </div>
       <section class="shell course-section">
-        <div class="section-head"><div><p class="kicker">MCP TESTING SERIES</p><h2>MCP 测试系列</h2></div><p style="max-width:390px;margin:0;color:var(--muted);font-size:13px;line-height:1.8">课程内容来自抖音公开视频，点击已发布课程即可观看。权限控制专题保留卡片，待补对应视频链接。</p></div>
+        <div class="section-head"><div><p class="kicker">MCP TESTING SERIES</p><h2>MCP 测试系列</h2></div></div>
         <div class="course-grid">
-          <a class="course-tile" href="#" data-course="mcp-scope"><div><span class="lesson">01 / TEST SCOPE</span><h3>MCP 到底应该测试什么</h3><p>从 MCP 概念、Inspector 到认证授权和 Agent 工具选择，建立可执行的测试地图。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
-          <a class="course-tile" href="#" data-course="mcp-inspector"><div><span class="lesson">02 / TOOL TESTING</span><h3>MCP Inspector 直接测 Tool</h3><p>连接 MCP Server，检查 Tool Schema，并验证正常与异常参数的返回结果。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
-          <a class="course-tile" href="#" data-course="mcp-auth"><div><span class="lesson">03 / AUTHENTICATION</span><h3>MCP 身份认证测试</h3><p>对比未携带 Key、伪造 Key 与有效 Key 时的响应，区分 HTTP 层和 MCP 层结果。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
-          <a class="course-tile" href="#" data-course="mcp-permission"><div><span class="lesson">04 / AUTHORIZATION</span><h3>MCP 权限控制怎么测</h3><p>围绕身份、授权边界、工具调用权限和副作用设计验证场景。</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-scope"><div><span class="lesson">01 / TEST SCOPE</span><h3>MCP 到底应该测试什么</h3><p>从 MCP 概念、Inspector 到认证授权和 Agent 工具选择，建立可执行的测试地图</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-inspector"><div><span class="lesson">02 / TOOL TESTING</span><h3>MCP Inspector 直接测 Tool</h3><p>连接 MCP Server，检查 Tool Schema，并验证正常与异常参数的返回结果</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-auth"><div><span class="lesson">03 / AUTHENTICATION</span><h3>MCP 身份认证测试</h3><p>对比未携带 Key、伪造 Key 与有效 Key 时的响应，区分 HTTP 层和 MCP 层结果</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
+          <a class="course-tile" href="#" data-course="mcp-permission"><div><span class="lesson">04 / AUTHORIZATION</span><h3>MCP 权限控制怎么测</h3><p>围绕身份、授权边界、工具调用权限和副作用设计验证场景</p></div><div class="course-cta"><span>视频链接待补充</span><span>↗</span></div></a>
         </div>
-        <p class="course-note">前三条课程已连接抖音原视频；权限控制专题的视频链接待补充。</p>
       </section>
       <div class="shell section" style="padding-top:0"><div class="closing"><h2>想看项目之外的经验和职业经历？</h2><a class="button" href="#resume" data-route="resume">查看简历 <span class="arrow">↗</span></a></div></div>
     </section>
@@ -444,7 +443,7 @@
             <p class="kicker">RÉSUMÉ / 04</p>
             <h1 class="resume-name">蔡金伟</h1>
             <p class="resume-title">AI 测试开发工程师 · 6 年经验</p>
-            <p class="resume-summary">具备从需求梳理、AI 辅助开发、测试验证到部署迭代的端到端交付经验。长期从事业务测试与自动化建设，近年持续探索 LLM 测试、AI 测试工具和独立产品实践。</p>
+            <p class="resume-summary">具备从需求梳理、AI 辅助开发、测试验证到部署迭代的端到端交付经验长期从事业务测试与自动化建设，近年持续探索 LLM 测试、AI 测试工具和独立产品实践</p>
             <div class="resume-contact" aria-label="联系方式">
               <a href="tel:13503450662">电话　13503450662</a>
               <a href="mailto:imacaiy@gmail.com">邮箱　imacaiy@gmail.com</a>
@@ -457,12 +456,12 @@
         <section class="resume-block">
           <div class="section-head"><div><p class="kicker">CORE SKILLS</p><h2>专业技能</h2></div></div>
           <div class="resume-skill-grid">
-            <article class="resume-skill"><span>END-TO-END DELIVERY</span><p>具备 FDE 式端到端交付能力，覆盖需求梳理、AI 开发、测试验证、部署上线与迭代。</p></article>
-            <article class="resume-skill"><span>AI CODING & LLM</span><p>熟练使用 Codex、OpenCode 等 AI Coding 工具辅助开发、调试与排障；运用 LLM 进行需求分析、测试设计、用例生成与缺陷定位。</p></article>
-            <article class="resume-skill"><span>TEST DESIGN</span><p>具备完整测试设计能力，覆盖功能、场景、边界值与异常流；能独立编写测试计划、用例和报告，评估测试范围与资源投入。</p></article>
-            <article class="resume-skill"><span>AUTOMATION</span><p>积累 1k+ 自动化用例交付经验，熟悉 pytest、requests、SeleniumBase；熟悉 Git、Docker、Jenkins 与 CI/CD 流程。</p></article>
-            <article class="resume-skill"><span>TEST DATA & PLATFORMS</span><p>设计并实现测试数据构造工具，支持充值、订单、活动等复杂业务快速造数；具备网站、小程序及 AI 应用落地和生产部署经验。</p></article>
-            <article class="resume-skill"><span>TOOLS & OPERATIONS</span><p>熟悉 Charles、Apifox、DBeaver、Linux、SQL、Redis 与日志分析，具备自动化测试、服务部署和问题定位经验。</p></article>
+            <article class="resume-skill"><span>END-TO-END DELIVERY</span><p>具备 FDE 式端到端交付能力，覆盖需求梳理、AI 开发、测试验证、部署上线与迭代</p></article>
+            <article class="resume-skill"><span>AI CODING & LLM</span><p>熟练使用 Codex、OpenCode 等 AI Coding 工具辅助开发、调试与排障；运用 LLM 进行需求分析、测试设计、用例生成与缺陷定位</p></article>
+            <article class="resume-skill"><span>TEST DESIGN</span><p>具备完整测试设计能力，覆盖功能、场景、边界值与异常流；能独立编写测试计划、用例和报告，评估测试范围与资源投入</p></article>
+            <article class="resume-skill"><span>AUTOMATION</span><p>积累 1k+ 自动化用例交付经验，熟悉 pytest、requests、SeleniumBase；熟悉 Git、Docker、Jenkins 与 CI/CD 流程</p></article>
+            <article class="resume-skill"><span>TEST DATA & PLATFORMS</span><p>设计并实现测试数据构造工具，支持充值、订单、活动等复杂业务快速造数；具备网站、小程序及 AI 应用落地和生产部署经验</p></article>
+            <article class="resume-skill"><span>TOOLS & OPERATIONS</span><p>熟悉 Charles、Apifox、DBeaver、Linux、SQL、Redis 与日志分析，具备自动化测试、服务部署和问题定位经验</p></article>
           </div>
         </section>
 
@@ -473,50 +472,50 @@
               <div class="resume-role-head"><div><h3>北京外企德科</h3><p>测试开发 / 大众点评免费试项目</p></div><span class="resume-role-date">2025.11 – 2026.05</span></div>
               <div class="resume-role-stats"><span>交付需求 70+</span><span>跟踪缺陷 150+</span><span>准时上线率约 95%</span></div>
               <ul>
-                <li>负责免费菜业务测试，围绕活动创建、审核、抽奖分发等核心链路设计端到端方案，校验多端数据一致性。</li>
-                <li>参与需求分析、方案设计、问题定位及上线验证，推动业务需求按期交付。</li>
-                <li>基于 AI 能力搭建测试辅助工具，支持结构化测试用例生成，提升用例设计与评审效率。</li>
-                <li>开发测试数据构造工具，支持充值、订单生成、活动创建等场景，降低测试环境造数成本。</li>
+                <li>负责免费菜业务测试，围绕活动创建、审核、抽奖分发等核心链路设计端到端方案，校验多端数据一致性</li>
+                <li>参与需求分析、方案设计、问题定位及上线验证，推动业务需求按期交付</li>
+                <li>基于 AI 能力搭建测试辅助工具，支持结构化测试用例生成，提升用例设计与评审效率</li>
+                <li>开发测试数据构造工具，支持充值、订单生成、活动创建等场景，降低测试环境造数成本</li>
               </ul>
-              <details class="project-detail"><summary>代表项目与成果：大众点评免费试</summary><div class="project-detail-content"><p>面向本地生活服务商家的营销获客与评价管理平台，通过免费体验换取真实评价，帮助商家积累评价并为用户提供服务体验。</p><p class="subhead">项目成果</p><ul><li>负责服务的读接口流量回放，将线上真实流量转化为接口回归用例，服务接口覆盖率约 54%。</li><li>结合业务场景沉淀测试用例生成 Skills，辅助梳理测试点并生成用例。</li><li>开发充值、订单生成和活动创建等测试数据构造工具，支撑场景复现。</li><li>基于内部压测平台执行并发领取压测，验证性能指标及库存扣减准确性。</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目与成果：大众点评免费试</summary><div class="project-detail-content"><p>面向本地生活服务商家的营销获客与评价管理平台，通过免费体验换取真实评价，帮助商家积累评价并为用户提供服务体验</p><p class="subhead">项目成果</p><ul><li>负责服务的读接口流量回放，将线上真实流量转化为接口回归用例，服务接口覆盖率约 54%</li><li>结合业务场景沉淀测试用例生成 Skills，辅助梳理测试点并生成用例</li><li>开发充值、订单生成和活动创建等测试数据构造工具，支撑场景复现</li><li>基于内部压测平台执行并发领取压测，验证性能指标及库存扣减准确性</li></ul></div></details>
             </article>
 
             <article class="resume-role">
               <div class="resume-role-head"><div><h3>北京字跳网络</h3><p>测试开发 / 财经智能语音机器人平台</p></div><span class="resume-role-date">2025.01 – 2025.10</span></div>
               <div class="resume-role-stats"><span>交付需求 20+</span><span>自动化用例 100+</span><span>需求准时率 99%±</span></div>
               <ul>
-                <li>参与平台迭代测试，设计并执行覆盖核心业务与边界场景的测试用例。</li>
-                <li>负责接口自动化建设，编写维护 100+ 用例并纳入冒烟回归集。</li>
-                <li>推动解决高优线上风险，制定回归隔离与话术管控方案，完善风险场景库。</li>
-                <li>参与日常 Oncall 支撑，定位并推动修复线上问题，保障平台稳定运行。</li>
-                <li>项目整体测试交付无重大事故，需求上线准时率稳定保持在 99%±。</li>
+                <li>参与平台迭代测试，设计并执行覆盖核心业务与边界场景的测试用例</li>
+                <li>负责接口自动化建设，编写维护 100+ 用例并纳入冒烟回归集</li>
+                <li>推动解决高优线上风险，制定回归隔离与话术管控方案，完善风险场景库</li>
+                <li>参与日常 Oncall 支撑，定位并推动修复线上问题，保障平台稳定运行</li>
+                <li>项目整体测试交付无重大事故，需求上线准时率稳定保持在 99%±</li>
               </ul>
-              <details class="project-detail"><summary>代表项目与成果：财经智能语音机器人平台</summary><div class="project-detail-content"><p>面向财经细分场景的语音互动外呼机器人平台，支持文本与语音交互、外呼电话等能力，覆盖能力、机器人、知识与运营管理。</p><p class="subhead">项目成果</p><ul><li>全程参与项目交付，从需求评审到上线验收全链路介入。</li><li>在需求与技术评审阶段识别不明确点，向产品确认功能预期，确保测试覆盖与业务逻辑一致。</li><li>基于大模型生成并结合业务场景优化用例，补充边界与异常场景。</li><li>编写维护接口自动化用例 80+，覆盖核心业务链路。</li><li>跟踪缺陷全生命周期并输出测试报告，实现测试结果可追溯。</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目与成果：财经智能语音机器人平台</summary><div class="project-detail-content"><p>面向财经细分场景的语音互动外呼机器人平台，支持文本与语音交互、外呼电话等能力，覆盖能力、机器人、知识与运营管理</p><p class="subhead">项目成果</p><ul><li>全程参与项目交付，从需求评审到上线验收全链路介入</li><li>在需求与技术评审阶段识别不明确点，向产品确认功能预期，确保测试覆盖与业务逻辑一致</li><li>基于大模型生成并结合业务场景优化用例，补充边界与异常场景</li><li>编写维护接口自动化用例 80+，覆盖核心业务链路</li><li>跟踪缺陷全生命周期并输出测试报告，实现测试结果可追溯</li></ul></div></details>
             </article>
 
             <article class="resume-role">
               <div class="resume-role-head"><div><h3>浙江快手信息</h3><p>测试开发 / 电商供应链与达人选品</p></div><span class="resume-role-date">2022.07 – 2025</span></div>
               <div class="resume-role-stats"><span>交付需求 200+</span><span>产出用例 30k+</span><span>自动化 Case 1k+</span><span>准时交付率约 95%</span></div>
               <ul>
-                <li>跟踪解决关键缺陷 180+；协助 Jenkins 自动化测试流水线实现并发、多节点分布式运行与失败重试。</li>
-                <li>维护覆盖核心流程 150+ 的自动化脚本库，覆盖货架上下架、半提单结算等场景。</li>
-                <li>参与流量回放落地，完成 290+ 接口数据回归测试，发现并解决 15 例数据问题。</li>
-                <li>运用 ChatGPT、DeepSeek 等 AI 工具优化脚本，提升测试效率。</li>
+                <li>跟踪解决关键缺陷 180+；协助 Jenkins 自动化测试流水线实现并发、多节点分布式运行与失败重试</li>
+                <li>维护覆盖核心流程 150+ 的自动化脚本库，覆盖货架上下架、半提单结算等场景</li>
+                <li>参与流量回放落地，完成 290+ 接口数据回归测试，发现并解决 15 例数据问题</li>
+                <li>运用 ChatGPT、DeepSeek 等 AI 工具优化脚本，提升测试效率</li>
               </ul>
-              <details class="project-detail"><summary>代表项目 1：快手快分销商家平台</summary><div class="project-detail-content"><p>连接货主与达人，围绕计划管理、找达人、找团长、效果看板和寄样管理，帮助商家推广商品。</p><p class="subhead">项目成果</p><ul><li>累计交付需求 50+，跟踪缺陷 40+，产出用例 8k+，需求准时上线率约 95%。</li><li>从 0 到 1 维护 UI 自动化，累计覆盖 290+ 核心功能和模块。</li><li>推进流量回放落地，累计交付 180+ 接口数据回归。</li><li>制定冒烟测试准入规范及接口对齐标准，核心功能覆盖率达 90%。</li><li>项目无高优问题或故障，无因测试导致的需求延期；测试/开发联调比为 25.6%。</li></ul></div></details>
-              <details class="project-detail"><summary>代表项目 2：快手分销达人选品中心 APP</summary><div class="project-detail-content"><p>面向快手达人和商家的选品工具，包含首页推荐、搜索、带货邀约、货架管理、收益统计和申样等功能。</p><p class="subhead">项目成果</p><ul><li>负责 APP 端核心业务测试，保障多版本需求稳定交付。</li><li>参与 Android 与 iOS 双端 UI 自动化建设，维护核心业务用例。</li><li>推动自动化与 CI/CD 集成，缩短版本回归执行耗时。</li><li>累计输出 80+ 测试报告，实现问题可追溯。</li><li>制定冒烟准入标准，筛选 190+ 核心用例，提测通过率从 50% 提升至 85%。</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目 1：快手快分销商家平台</summary><div class="project-detail-content"><p>连接货主与达人，围绕计划管理、找达人、找团长、效果看板和寄样管理，帮助商家推广商品</p><p class="subhead">项目成果</p><ul><li>累计交付需求 50+，跟踪缺陷 40+，产出用例 8k+，需求准时上线率约 95%</li><li>从 0 到 1 维护 UI 自动化，累计覆盖 290+ 核心功能和模块</li><li>推进流量回放落地，累计交付 180+ 接口数据回归</li><li>制定冒烟测试准入规范及接口对齐标准，核心功能覆盖率达 90%</li><li>项目无高优问题或故障，无因测试导致的需求延期；测试/开发联调比为 25.6%</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目 2：快手分销达人选品中心 APP</summary><div class="project-detail-content"><p>面向快手达人和商家的选品工具，包含首页推荐、搜索、带货邀约、货架管理、收益统计和申样等功能</p><p class="subhead">项目成果</p><ul><li>负责 APP 端核心业务测试，保障多版本需求稳定交付</li><li>参与 Android 与 iOS 双端 UI 自动化建设，维护核心业务用例</li><li>推动自动化与 CI/CD 集成，缩短版本回归执行耗时</li><li>累计输出 80+ 测试报告，实现问题可追溯</li><li>制定冒烟准入标准，筛选 190+ 核心用例，提测通过率从 50% 提升至 85%</li></ul></div></details>
             </article>
 
             <article class="resume-role">
               <div class="resume-role-head"><div><h3>上海同鑫科技</h3><p>测试工程师 / eHR 一体化云管理平台</p></div><span class="resume-role-date">2020.03 – 2022.06</span></div>
               <div class="resume-role-stats"><span>参与版本迭代 120+</span><span>发现缺陷 130+</span><span>准时交付率约 90%</span></div>
               <ul>
-                <li>参与需求评审并识别风险，设计覆盖功能、安全、性能及边界场景的测试用例。</li>
-                <li>跟踪缺陷生命周期，推动修复并分析根因，提出预防性改进建议。</li>
-                <li>基于自动化框架覆盖日常迭代核心链路；与开发共同梳理性能场景，使用 JMeter 分析瓶颈。</li>
-                <li>开展兼容性、SQL 注入基础验证及数据一致性验证。</li>
+                <li>参与需求评审并识别风险，设计覆盖功能、安全、性能及边界场景的测试用例</li>
+                <li>跟踪缺陷生命周期，推动修复并分析根因，提出预防性改进建议</li>
+                <li>基于自动化框架覆盖日常迭代核心链路；与开发共同梳理性能场景，使用 JMeter 分析瓶颈</li>
+                <li>开展兼容性、SQL 注入基础验证及数据一致性验证</li>
               </ul>
-              <details class="project-detail"><summary>代表项目与成果：同鑫 eHR 一体化云管理平台服务端测试</summary><div class="project-detail-content"><p>基于企业 Intranet / Internet 的员工信息服务系统，覆盖组织规划、人员、考勤、薪资、培训、绩效和招聘管理。</p><p class="subhead">项目成果</p><ul><li>参与需求评审、测试计划制定、用例设计与交叉评审。</li><li>使用 Charles 协助定位问题并推进修复。</li><li>独立负责 120+ 需求迭代上线，发现缺陷 150+。</li><li>编写维护接口与 UI 自动化脚本，保障产品稳定性。</li><li>使用 JMeter 对新上线接口进行常态化压测，验证高负载链路。</li><li>开展兼容性、基础安全及数据一致性验证。</li></ul></div></details>
+              <details class="project-detail"><summary>代表项目与成果：同鑫 eHR 一体化云管理平台服务端测试</summary><div class="project-detail-content"><p>基于企业 Intranet / Internet 的员工信息服务系统，覆盖组织规划、人员、考勤、薪资、培训、绩效和招聘管理</p><p class="subhead">项目成果</p><ul><li>参与需求评审、测试计划制定、用例设计与交叉评审</li><li>使用 Charles 协助定位问题并推进修复</li><li>独立负责 120+ 需求迭代上线，发现缺陷 150+</li><li>编写维护接口与 UI 自动化脚本，保障产品稳定性</li><li>使用 JMeter 对新上线接口进行常态化压测，验证高负载链路</li><li>开展兼容性、基础安全及数据一致性验证</li></ul></div></details>
             </article>
           </div>
         </section>
@@ -524,16 +523,15 @@
         <section class="resume-block">
           <div class="section-head"><div><p class="kicker">PROJECTS & PRACTICE</p><h2>个人项目与工程实践</h2></div></div>
           <div class="resume-project-grid">
-            <article class="resume-project"><div class="resume-project-top"><div><span class="project-kind">WECHAT MINI PROGRAM</span><h3>小露拼豆</h3></div><img class="resume-project-qr" src="/assets/xiaolu-mini-program-qr.png" alt="小露拼豆微信小程序二维码" /></div><p>面向拼豆爱好者的图片转拼豆图小程序，支持上传图片生成可编辑图纸，以及 AI 图像创作、图案编辑、坐标辅助、成品预览、材料清单、施工图和色板生成。作品可保存、同步和下载。</p><div class="resume-project-footer">扫描二维码查看小程序</div></article>
-            <article class="resume-project"><div class="resume-project-top"><div><span class="project-kind">WECHAT OFFICIAL ACCOUNT</span><h3>质量引擎</h3></div><img class="resume-project-qr" src="/assets/quality-engine-qr.png" alt="质量引擎微信公众号二维码" /></div><p>围绕 AI 时代的软件质量工程，分享测试开发、自动化测试、质量分析与工程效率实践，结合真实项目沉淀系列文章、案例和工具方法。</p><div class="resume-project-footer">扫描二维码关注公众号</div></article>
+            <article class="resume-project"><div class="resume-project-copy"><span class="project-kind">WECHAT MINI PROGRAM</span><h3>小露拼豆</h3><p>面向拼豆爱好者的图片转拼豆图小程序，支持上传图片生成可编辑图纸，以及 AI 图像创作、图案编辑、坐标辅助、成品预览、材料清单、施工图和色板生成作品可保存、同步和下载</p><div class="resume-project-footer">扫描二维码查看小程序</div></div><img class="resume-project-qr" src="/assets/xiaolu-mini-program-qr.png" alt="小露拼豆微信小程序二维码" /></article>
+            <article class="resume-project"><div class="resume-project-copy"><span class="project-kind">WECHAT OFFICIAL ACCOUNT</span><h3>质量引擎</h3><p>围绕 AI 时代的软件质量工程，分享测试开发、自动化测试、质量分析与工程效率实践，结合真实项目沉淀系列文章、案例和工具方法</p><div class="resume-project-footer">扫描二维码关注公众号</div></div><img class="resume-project-qr" src="/assets/quality-engine-qr.png" alt="质量引擎微信公众号二维码" /></article>
           </div>
         </section>
-        <p class="resume-skill-summary">简历内容根据你提供的 PDF 整理；未在 PDF 中出现的教育经历或其他信息未作补写。</p>
       </div>
     </section>
   </main>
 
-  <footer class="shell footer"><span>© <span id="year"></span> 蔡金伟 / Adrian Cai</span><span>KEEP TESTING · KEEP BUILDING</span></footer>
+  <footer class="shell footer"><span>© <span id="year"></span> 蔡金伟</span><span>KEEP TESTING · KEEP BUILDING</span></footer>
   <div class="toast" role="status" aria-live="polite"></div>
   <script>
     const courseLinks = {

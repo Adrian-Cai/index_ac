@@ -1,6 +1,6 @@
 # 蔡金伟个人主页
 
-这是蔡金伟（Adrian Cai）的个人主页项目，用于介绍个人方向、工作经历、项目实践和课程分享，并集中展示简历与代表作品。
+这是蔡金伟（Adrian）的个人主页项目，用于介绍个人方向、工作经历、项目实践和课程分享，并集中展示简历与代表作品
 
 ## 页面内容
 
@@ -11,8 +11,8 @@
 
 ## 项目说明
 
-仓库当前提供可直接部署的静态站点文件，包括 HTML、CSS、JavaScript 和图片资源。站点通过 Docker Compose 配置 Caddy 提供服务；根目录的 `Jenkinsfile` 描述了部署流水线。
+仓库当前提供可直接部署的静态站点文件，包括 HTML、CSS、JavaScript 和图片资源推送 main 后，根目录 .cnb.yml 会将站点打包为 Docker 镜像；根目录 Jenkinsfile 从 CNB 制品库拉取指定提交的镜像并部署到 Jenkins Agent 所在服务器
 
 ## 部署
 
-部署步骤、域名配置和服务器要求见[自托管部署指南](caijinwei-portfolio-self-host/README.md)。
+部署步骤、域名配置和服务器要求见[自托管部署指南](caijinwei-portfolio-self-host/README.md)
